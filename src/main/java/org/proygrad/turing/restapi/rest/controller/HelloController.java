@@ -1,4 +1,4 @@
-package org.proygrad.turing.restapi.controller;
+package org.proygrad.turing.restapi.rest.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
