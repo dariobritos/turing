@@ -1,4 +1,4 @@
-package org.proygrad.turing.restapi.rest.api;
+package org.proygrad.turing.api;
 
 
 public class Calculation {

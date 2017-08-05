@@ -1,15 +1,13 @@
-package org.proygrad.turing.restapi.app;
+package org.proygrad.turing.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.jetty.JettyEmbeddedServletContainerFactory;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan("org.proygrad.turing.restapi")
+@ComponentScan("org.proygrad.turing")
 public class App {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.proygrad.turing.restapi.config;
+package org.proygrad.turing.config;
 
 import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
