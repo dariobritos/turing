@@ -1,14 +1,14 @@
 package org.proygrad.turing.api;
 
 
-public class Calculation {
+public class CalculationTO {
 
     private String id;
     private String name;
     private String type;
     private String result;
 
-    public Calculation() {
+    public CalculationTO() {
     }
 
     public String getId() {

@@ -1,23 +1,27 @@
 package org.proygrad.turing.persistence.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "CALCULATIONS")
-public class CalculationEntity extends AbstractHibernateEntity<Long>{
+public class CalculationEntity extends AbstractHibernateEntity<UUID>{
 
-    private Long id;
+    private UUID id;
 
+
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "ID",columnDefinition = "BINARY(16)")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
-    @Override
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    @Override
-    public void setId(Long aLong) {
-        this.id = aLong;
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }

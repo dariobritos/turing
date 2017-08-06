@@ -67,10 +67,11 @@ public class TuringPersistenceConfig {
      * @param sessionFactory
      * @return HibernateTransactionManager
      */
-    @Bean
+    @Bean(name = "transactionManager")
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
         return txManager;
     }
+
 }
