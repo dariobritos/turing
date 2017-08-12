@@ -1,15 +1,21 @@
 package org.proygrad.turing.api;
 
+import java.util.Map;
 
 public class CalculationTO {
 
     private String id;
     private String name;
     private String type;
-    private String result;
 
-    public CalculationTO() {
-    }
+    private Map<String, Double> input;
+    private Double seed;
+
+    private String precision;
+
+    private String result;
+    private Map<String, Double> output;
+
 
     public String getId() {
         return id;
@@ -35,6 +41,30 @@ public class CalculationTO {
         this.type = type;
     }
 
+    public Map<String, Double> getInput() {
+        return input;
+    }
+
+    public void setInput(Map<String, Double> input) {
+        this.input = input;
+    }
+
+    public double getSeed() {
+        return seed;
+    }
+
+    public void setSeed(Double seed) {
+        this.seed = seed;
+    }
+
+    public String getPrecision() {
+        return precision;
+    }
+
+    public void setPrecision(String precision) {
+        this.precision = precision;
+    }
+
     public String getResult() {
         return result;
     }
@@ -42,4 +72,13 @@ public class CalculationTO {
     public void setResult(String result) {
         this.result = result;
     }
+
+    public Map<String, Double> getOutput() {
+        return output;
+    }
+
+    public void setOutput(Map<String, Double> output) {
+        this.output = output;
+    }
 }
+
