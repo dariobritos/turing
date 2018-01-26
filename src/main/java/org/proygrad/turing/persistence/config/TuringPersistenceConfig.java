@@ -24,13 +24,14 @@ public class TuringPersistenceConfig {
     private Environment env;
 
 
+
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getRequiredProperty("datasource.driver"));
-        dataSource.setUrl(env.getRequiredProperty("datasource.url"));
-        dataSource.setUsername(env.getRequiredProperty("datasource.username"));
-        dataSource.setPassword(env.getRequiredProperty("datasource.password"));
+        dataSource.setDriverClassName(env.getRequiredProperty("hibernate.connection.driver_class"));
+        dataSource.setUrl(env.getRequiredProperty("hibernate.connection.url"));
+        dataSource.setUsername(env.getRequiredProperty("hibernate.connection.username"));
+        dataSource.setPassword(env.getRequiredProperty("hibernate.connection.password"));
         return dataSource;
     }
 

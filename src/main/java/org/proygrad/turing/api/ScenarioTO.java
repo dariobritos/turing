@@ -1,27 +1,29 @@
 package org.proygrad.turing.api;
 
 import java.util.Map;
+import java.util.UUID;
 
-public class CalculationTO {
+public class ScenarioTO {
 
-    private String id;
+    private UUID id;
     private String name;
     private String type;
 
     private Map<String, Double> input;
-    private Double seed;
+    private Double seed=0d;
 
     private String precision;
 
     private String result;
     private Map<String, Double> output;
 
+    private String unit;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -79,6 +81,14 @@ public class CalculationTO {
 
     public void setOutput(Map<String, Double> output) {
         this.output = output;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }
 
