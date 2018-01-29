@@ -1,7 +1,7 @@
 package org.proygrad.turing.service.transactional;
 
 
-import org.proygrad.turing.api.ScenarioTO;
+import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.persistence.entities.ScenarioEntity;
 import org.springframework.stereotype.Service;
 

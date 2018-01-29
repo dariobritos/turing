@@ -1,14 +1,12 @@
 package org.proygrad.turing.persistence.dao;
 
 import org.proygrad.turing.persistence.AbstractHibernateEntityDAO;
-import org.proygrad.turing.persistence.entities.ScenarioEntity;
+import org.proygrad.turing.persistence.entities.UserEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-
 @Repository
-public class ScenarioDAO extends AbstractHibernateEntityDAO<ScenarioEntity,UUID> {
-
+public class UserDAO extends AbstractHibernateEntityDAO<UserEntity,String> {
 
 }

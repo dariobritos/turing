@@ -1,4 +1,4 @@
-package org.proygrad.turing.api;
+package org.proygrad.turing.api.scenario;
 
 import java.util.Map;
 import java.util.UUID;

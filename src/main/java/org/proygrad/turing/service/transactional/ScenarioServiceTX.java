@@ -1,15 +1,13 @@
 package org.proygrad.turing.service.transactional;
 
 
-import org.proygrad.turing.api.ScenarioTO;
+import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.persistence.dao.ScenarioDAO;
 import org.proygrad.turing.persistence.entities.ScenarioEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class ScenarioServiceTX {
@@ -21,15 +19,27 @@ public class ScenarioServiceTX {
     private ScenarioMapper scenarioMapper;
 
     public UUID addScenario(ScenarioTO scenarioTO) {
-        ScenarioEntity entity = new ScenarioEntity();
-        entity.setType(scenarioTO.getType());
-        entity.setUnit(scenarioTO.getUnit());
+        ScenarioEntity entity = scenarioMapper.toEntity(scenarioTO);
+
         scenarioDAO.save(entity);
 
         return entity.getId();
     }
 
-    public List<ScenarioTO> getScenario() {
-        return scenarioDAO.readAll().stream().map(this.scenarioMapper::toTransferObject).collect(Collectors.toList());
+    public ScenarioTO getScenario(UUID id) {
+        return scenarioMapper.toTransferObject(scenarioDAO.load(id));
     }
+
+    public UUID updateScenario(UUID id, ScenarioTO scenarioTO) {
+        ScenarioEntity entity = scenarioDAO.load(id);
+
+        if(entity!=null){
+            entity.setType(scenarioTO.getType());
+            entity.setUnit(scenarioTO.getUnit());
+
+            return entity.getId();
+        }
+        return null;
+    }
+
 }

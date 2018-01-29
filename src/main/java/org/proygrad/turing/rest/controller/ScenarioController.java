@@ -1,25 +1,21 @@
 package org.proygrad.turing.rest.controller;
 
-import org.proygrad.turing.api.ScenarioTO;
+import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.service.nontransactional.ScenarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
 public class ScenarioController {
 
     @Autowired
-    ScenarioService scenarioService;
+    private ScenarioService scenarioService;
 
-    @RequestMapping(value = "/scenario", method = RequestMethod.GET)
-    public List<ScenarioTO> scenario() {
-        return scenarioService.getScenario();
+    @RequestMapping(value = "/scenario/{id}", method = RequestMethod.GET)
+    public ScenarioTO scenario(@RequestParam("id") UUID id) {
+        return scenarioService.getScenario(id);
     }
 
     @RequestMapping(value = "/scenario", method = RequestMethod.POST)
@@ -27,5 +23,12 @@ public class ScenarioController {
 
         return scenarioService.addScenario(scenarioTO);
     }
+
+    @RequestMapping(value = "/scenario/{id}", method = RequestMethod.PATCH)
+    public UUID scenarioUpd(@RequestParam("id") UUID id, @RequestBody ScenarioTO scenarioTO) {
+
+        return scenarioService.updateScenario(id, scenarioTO);
+    }
+
 
 }
