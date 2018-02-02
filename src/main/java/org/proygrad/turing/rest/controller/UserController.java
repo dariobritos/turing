@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -21,13 +20,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public UUID addUser(@RequestBody UserTO userTO) {
+    public String addUser(@RequestBody UserTO userTO) {
 
         return userService.addUser(userTO);
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.PATCH)
-    public UUID updateUser(@RequestBody UserTO userTO) {
+    public String updateUser(@RequestBody UserTO userTO) {
 
         return userService.updateUser(userTO);
     }

@@ -5,8 +5,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "USER_PREFERENCE")
+// @Entity
+// @Table(name = "USER_PREFERENCE")
 public class UserPreferencesEntity extends AbstractHibernateEntity<String>{
 
     @Id

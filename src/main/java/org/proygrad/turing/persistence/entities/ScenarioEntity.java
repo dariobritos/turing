@@ -1,19 +1,15 @@
 package org.proygrad.turing.persistence.entities;
 
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Column;
+import javax.persistence.Id;
 
-import javax.persistence.*;
-import java.util.UUID;
-
-@Entity
-@Table(name = "SCENARIO")
-public class ScenarioEntity extends AbstractHibernateEntity<UUID>{
+// @Entity
+//@Table(name = "SCENARIO")
+public class ScenarioEntity extends AbstractHibernateEntity<String>{
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "ID")
-    private UUID id;
+    private String id;
 
     @Column(name = "TYPE")
     private String type;
@@ -21,11 +17,11 @@ public class ScenarioEntity extends AbstractHibernateEntity<UUID>{
     @Column(name = "UNIT")
     private String unit;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

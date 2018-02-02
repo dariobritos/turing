@@ -7,9 +7,10 @@ import org.proygrad.turing.persistence.entities.ScenarioEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import javax.transaction.Transactional;
 
 @Service
+@Transactional
 public class ScenarioServiceTX {
 
     @Autowired
@@ -18,7 +19,7 @@ public class ScenarioServiceTX {
     @Autowired
     private ScenarioMapper scenarioMapper;
 
-    public UUID addScenario(ScenarioTO scenarioTO) {
+    public String addScenario(ScenarioTO scenarioTO) {
         ScenarioEntity entity = scenarioMapper.toEntity(scenarioTO);
 
         scenarioDAO.save(entity);
@@ -26,11 +27,11 @@ public class ScenarioServiceTX {
         return entity.getId();
     }
 
-    public ScenarioTO getScenario(UUID id) {
+    public ScenarioTO getScenario(String id) {
         return scenarioMapper.toTransferObject(scenarioDAO.load(id));
     }
 
-    public UUID updateScenario(UUID id, ScenarioTO scenarioTO) {
+    public String updateScenario(String id, ScenarioTO scenarioTO) {
         ScenarioEntity entity = scenarioDAO.load(id);
 
         if(entity!=null){

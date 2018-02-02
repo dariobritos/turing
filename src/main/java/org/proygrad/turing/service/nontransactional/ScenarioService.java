@@ -5,8 +5,6 @@ import org.proygrad.turing.service.transactional.ScenarioServiceTX;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 public class ScenarioService {
 
@@ -14,15 +12,15 @@ public class ScenarioService {
     private ScenarioServiceTX scenarioServiceTX;
 
 
-    public UUID addScenario(ScenarioTO scenarioTO) {
+    public String addScenario(ScenarioTO scenarioTO) {
         return scenarioServiceTX.addScenario(scenarioTO);
     }
 
-    public ScenarioTO getScenario(UUID id) {
+    public ScenarioTO getScenario(String id) {
         return scenarioServiceTX.getScenario(id);
     }
 
-    public UUID updateScenario(UUID id, ScenarioTO scenarioTO) {
+    public String updateScenario(String id, ScenarioTO scenarioTO) {
         return scenarioServiceTX.updateScenario(id, scenarioTO);
     }
 }

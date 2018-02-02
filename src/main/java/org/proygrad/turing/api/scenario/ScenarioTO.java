@@ -1,11 +1,10 @@
 package org.proygrad.turing.api.scenario;
 
 import java.util.Map;
-import java.util.UUID;
 
 public class ScenarioTO {
 
-    private UUID id;
+    private String id;
     private String name;
     private String type;
 
@@ -19,11 +18,11 @@ public class ScenarioTO {
 
     private String unit;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

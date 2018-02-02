@@ -1,4 +1,4 @@
-package org.proygrad.turing.persistence;
+package org.proygrad.turing.persistence.entities;
 
 public interface HibernateEntity<ID> {
 
