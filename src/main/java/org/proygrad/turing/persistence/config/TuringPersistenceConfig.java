@@ -36,19 +36,19 @@ public class TuringPersistenceConfig {
     public PooledDataSource getMainDataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
 
-        dataSource.setDriverClass(env.getRequiredProperty("hibernate.connection.driver_class"));
-        dataSource.setJdbcUrl(env.getRequiredProperty("hibernate.connection.url"));
-        dataSource.setUser(env.getRequiredProperty("hibernate.connection.username"));
-        dataSource.setPassword(env.getRequiredProperty("hibernate.connection.password"));
-        dataSource.setMinPoolSize(Integer.parseInt(env.getRequiredProperty("hibernate.c3p0.min_size")));
-        dataSource.setMaxPoolSize(Integer.parseInt(env.getRequiredProperty("hibernate.c3p0.max_size")));
+        dataSource.setDriverClass(env.getRequiredProperty("turing.hibernate.connection.driver_class"));
+        dataSource.setJdbcUrl(env.getRequiredProperty("turing.hibernate.connection.url"));
+        dataSource.setUser(env.getRequiredProperty("turing.hibernate.connection.username"));
+        dataSource.setPassword(env.getRequiredProperty("turing.hibernate.connection.password"));
+        dataSource.setMinPoolSize(Integer.parseInt(env.getRequiredProperty("turing.hibernate.c3p0.min_size")));
+        dataSource.setMaxPoolSize(Integer.parseInt(env.getRequiredProperty("turing.hibernate.c3p0.max_size")));
         dataSource.setTestConnectionOnCheckin(false);
-        dataSource.setIdleConnectionTestPeriod(Integer.parseInt(env.getRequiredProperty("hibernate.c3p0.idle_test_period")));
+        dataSource.setIdleConnectionTestPeriod(Integer.parseInt(env.getRequiredProperty("turing.hibernate.c3p0.idle_test_period")));
         dataSource.setPreferredTestQuery("/* PING */ select 1");
-        dataSource.setMaxConnectionAge(Integer.parseInt(env.getRequiredProperty("hibernate.c3p0.max_connection_age")));
-        dataSource.setMaxStatements(Integer.parseInt(env.getRequiredProperty("hibernate.c3p0.max_statements")));
-        dataSource.setMaxStatementsPerConnection(Integer.parseInt(env.getRequiredProperty("hibernate.c3p0.max_statements_per_connection")));
-        dataSource.setNumHelperThreads(Integer.parseInt(env.getRequiredProperty("hibernate.c3p0.num_helper_threads")));
+        dataSource.setMaxConnectionAge(Integer.parseInt(env.getRequiredProperty("turing.hibernate.c3p0.max_connection_age")));
+        dataSource.setMaxStatements(Integer.parseInt(env.getRequiredProperty("turing.hibernate.c3p0.max_statements")));
+        dataSource.setMaxStatementsPerConnection(Integer.parseInt(env.getRequiredProperty("turing.hibernate.c3p0.max_statements_per_connection")));
+        dataSource.setNumHelperThreads(Integer.parseInt(env.getRequiredProperty("turing.hibernate.c3p0.num_helper_threads")));
 
         return dataSource;
     }
@@ -60,13 +60,13 @@ public class TuringPersistenceConfig {
         DataSource dataSource = this.getDataSource();
 
         Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-        hibernateProperties.setProperty("hibernate.bytecode.use_reflection_optimizer", env.getRequiredProperty("hibernate.bytecode.use_reflection_optimizer"));
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
-        hibernateProperties.setProperty("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        hibernateProperties.setProperty("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
-        hibernateProperties.setProperty("hibernate.generate_statistics", env.getRequiredProperty("hibernate.generate_statistics"));
-        hibernateProperties.setProperty("hibernate.connection.autocommit", env.getRequiredProperty("hibernate.connection.autocommit"));
+        hibernateProperties.setProperty("hibernate.dialect", env.getRequiredProperty("turing.hibernate.dialect"));
+        hibernateProperties.setProperty("hibernate.bytecode.use_reflection_optimizer", env.getRequiredProperty("turing.hibernate.bytecode.use_reflection_optimizer"));
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getRequiredProperty("turing.hibernate.hbm2ddl.auto"));
+        hibernateProperties.setProperty("hibernate.show_sql", env.getRequiredProperty("turing.hibernate.show_sql"));
+        hibernateProperties.setProperty("hibernate.format_sql", env.getRequiredProperty("turing.hibernate.format_sql"));
+        hibernateProperties.setProperty("hibernate.generate_statistics", env.getRequiredProperty("turing.hibernate.generate_statistics"));
+        hibernateProperties.setProperty("hibernate.connection.autocommit", env.getRequiredProperty("turing.hibernate.connection.autocommit"));
         hibernateProperties.setProperty("hibernate.connection.isolation", "2");
         hibernateProperties.setProperty("hibernate.connection.release_mode", "on_close");
 
