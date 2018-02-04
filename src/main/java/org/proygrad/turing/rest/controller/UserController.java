@@ -31,7 +31,7 @@ public class UserController {
         return userService.updateUser(id, userTO);
     }
 
-    @RequestMapping(value = "/user/{id}/scenario", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{id}/scenarios", method = RequestMethod.GET)
     public List<ScenarioTO> getUserScenario(@PathVariable("id") String id) {
         return userService.getUserScenario(id);
     }

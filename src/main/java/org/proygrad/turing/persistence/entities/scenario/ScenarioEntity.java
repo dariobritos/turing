@@ -37,10 +37,6 @@ public class ScenarioEntity extends AbstractHibernateEntity<String> {
     @JoinColumn(name = "SCENARIO_OUTPUT_ID")
     private List<CommonItemEntity> output;
 
-    public ScenarioEntity(){
-        //this.setId(UUID.randomUUID().toString());
-    }
-
     @Override
     public String getId() {
         return id;

@@ -13,6 +13,7 @@ public class ScenarioController {
 
     @RequestMapping(value = "/scenario/{id}", method = RequestMethod.GET)
     public ScenarioTO getScenario(@PathVariable("id") String id) {
+
         return scenarioService.getScenario(id);
     }
 
@@ -28,5 +29,16 @@ public class ScenarioController {
         return scenarioService.updateScenario(id, scenarioTO);
     }
 
+    @RequestMapping(value = "/scenario/{id}/input", method = RequestMethod.PATCH)
+    public String updateInputScenario(@PathVariable("id") String id, @RequestBody ScenarioTO scenarioTO) {
+
+        return scenarioService.updateInputScenario(id, scenarioTO);
+    }
+
+    @RequestMapping(value = "/scenario/{id}/output", method = RequestMethod.PATCH)
+    public String updateOutputScenario(@PathVariable("id") String id, @RequestBody ScenarioTO scenarioTO) {
+
+        return scenarioService.updateOutputScenario(id, scenarioTO);
+    }
 
 }

@@ -22,8 +22,14 @@ public class CommonItemEntity extends AbstractHibernateEntity<String> {
     @Column(name = "VALUE")
     private String value;
 
-    public CommonItemEntity(){
-    //    this.setId(UUID.randomUUID().toString());
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCode() {
@@ -42,13 +48,5 @@ public class CommonItemEntity extends AbstractHibernateEntity<String> {
         this.value = value;
     }
 
-    @Override
-    public String getId() {
-        return id;
-    }
 
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 }

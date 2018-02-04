@@ -23,8 +23,14 @@ public class DistributionEntity extends AbstractHibernateEntity<String> {
     @JoinColumn(name = "DISTRIBUTION_ID")
     private List<CommonItemEntity> parameters;
 
-    public DistributionEntity(){
-   //     this.setId(UUID.randomUUID().toString());
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getType() {
@@ -43,13 +49,4 @@ public class DistributionEntity extends AbstractHibernateEntity<String> {
         this.parameters = parameters;
     }
 
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 }

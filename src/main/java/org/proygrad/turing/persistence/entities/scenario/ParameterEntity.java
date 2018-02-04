@@ -34,8 +34,14 @@ public class ParameterEntity extends AbstractHibernateEntity<String> {
     @Column(name = "UNIT")
     private String unit;
 
-    public ParameterEntity(){
-        //this.setId(UUID.randomUUID().toString());
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCode() {
@@ -86,13 +92,4 @@ public class ParameterEntity extends AbstractHibernateEntity<String> {
         this.unit = unit;
     }
 
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 }

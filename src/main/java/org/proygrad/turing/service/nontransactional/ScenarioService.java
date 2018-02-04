@@ -22,4 +22,13 @@ public class ScenarioService {
     public String updateScenario(String id, ScenarioTO scenarioTO) {
         return scenarioServiceTX.updateScenario(id, scenarioTO);
     }
+
+    public String updateInputScenario(String id, ScenarioTO scenarioTO) {
+        return scenarioServiceTX.updateInputScenario(id, scenarioTO);
+    }
+
+    public String updateOutputScenario(String id, ScenarioTO scenarioTO) {
+        return scenarioServiceTX.updateOutputScenario(id, scenarioTO);
+    }
+
 }
