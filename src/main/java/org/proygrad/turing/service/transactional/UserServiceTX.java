@@ -3,7 +3,8 @@ package org.proygrad.turing.service.transactional;
 import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.api.user.UserTO;
 import org.proygrad.turing.persistence.dao.UserDAO;
-import org.proygrad.turing.persistence.entities.UserEntity;
+import org.proygrad.turing.persistence.entities.user.UserEntity;
+import org.proygrad.turing.service.transactional.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,8 @@ public class UserServiceTX {
         return entity.getId();
     }
 
-    public String updateUser(UserTO userTO) {
-        UserEntity entity = userDAO.load(userTO.getId());
+    public String updateUser(String id, UserTO userTO) {
+        UserEntity entity = userDAO.load(id);
 
         if(entity!=null){
             entity.setName(userTO.getName());

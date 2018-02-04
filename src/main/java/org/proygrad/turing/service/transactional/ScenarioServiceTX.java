@@ -3,7 +3,8 @@ package org.proygrad.turing.service.transactional;
 
 import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.persistence.dao.ScenarioDAO;
-import org.proygrad.turing.persistence.entities.ScenarioEntity;
+import org.proygrad.turing.persistence.entities.scenario.ScenarioEntity;
+import org.proygrad.turing.service.transactional.mapper.ScenarioMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ public class ScenarioServiceTX {
     @Autowired
     private ScenarioMapper scenarioMapper;
 
+    public ScenarioTO getScenario(String id) {
+        return scenarioMapper.toTransferObject(scenarioDAO.load(id));
+    }
+
     public String addScenario(ScenarioTO scenarioTO) {
         ScenarioEntity entity = scenarioMapper.toEntity(scenarioTO);
 
@@ -27,16 +32,12 @@ public class ScenarioServiceTX {
         return entity.getId();
     }
 
-    public ScenarioTO getScenario(String id) {
-        return scenarioMapper.toTransferObject(scenarioDAO.load(id));
-    }
-
     public String updateScenario(String id, ScenarioTO scenarioTO) {
         ScenarioEntity entity = scenarioDAO.load(id);
 
         if(entity!=null){
             entity.setType(scenarioTO.getType());
-            entity.setUnit(scenarioTO.getUnit());
+            entity.setUnitSystem(scenarioTO.getUnitSystem());
 
             return entity.getId();
         }

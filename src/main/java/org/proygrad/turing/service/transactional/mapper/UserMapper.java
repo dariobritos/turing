@@ -1,16 +1,12 @@
-package org.proygrad.turing.service.transactional;
+package org.proygrad.turing.service.transactional.mapper;
 
-import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.api.user.UserPreferencesTO;
 import org.proygrad.turing.api.user.UserTO;
-import org.proygrad.turing.persistence.entities.ScenarioEntity;
-import org.proygrad.turing.persistence.entities.UserEntity;
-import org.proygrad.turing.persistence.entities.UserPreferencesEntity;
+import org.proygrad.turing.persistence.entities.user.UserEntity;
+import org.proygrad.turing.persistence.entities.user.UserPreferencesEntity;
+import org.proygrad.turing.service.transactional.UserPreferencesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserMapper {
@@ -30,8 +26,8 @@ public class UserMapper {
         UserPreferencesEntity preferences = userPreferencesMapper.toEntity(data.getPreferences());
         entity.setPreferences(preferences);
 
-        List<ScenarioEntity> scenarios = data.getScenarios().stream().map(this.scenarioMapper::toEntity).collect(Collectors.toList());
-        entity.setScenarios(scenarios);
+       // List<ScenarioEntity> scenarios = data.getScenarios().stream().map(this.scenarioMapper::toEntity).collect(Collectors.toList());
+        //entity.setScenarios(scenarios);
 
 
         return entity;
@@ -48,8 +44,8 @@ public class UserMapper {
         UserPreferencesTO preferences = userPreferencesMapper.toTransferObject(data.getPreferences());
         transferObject.setPreferences(preferences);
 
-        List<ScenarioTO> scenarios = data.getScenarios().stream().map(this.scenarioMapper::toTransferObject).collect(Collectors.toList());
-        transferObject.setScenarios(scenarios);
+       // List<ScenarioTO> scenarios = data.getScenarios().stream().map(this.scenarioMapper::toTransferObject).collect(Collectors.toList());
+       // transferObject.setScenarios(scenarios);
 
         return transferObject;
     }

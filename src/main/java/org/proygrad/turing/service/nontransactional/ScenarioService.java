@@ -11,13 +11,12 @@ public class ScenarioService {
     @Autowired
     private ScenarioServiceTX scenarioServiceTX;
 
+    public ScenarioTO getScenario(String id) {
+        return scenarioServiceTX.getScenario(id);
+    }
 
     public String addScenario(ScenarioTO scenarioTO) {
         return scenarioServiceTX.addScenario(scenarioTO);
-    }
-
-    public ScenarioTO getScenario(String id) {
-        return scenarioServiceTX.getScenario(id);
     }
 
     public String updateScenario(String id, ScenarioTO scenarioTO) {

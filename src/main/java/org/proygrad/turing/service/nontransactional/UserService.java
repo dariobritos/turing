@@ -22,8 +22,8 @@ public class UserService {
         return userServiceTX.addUser(userTO);
     }
 
-    public String updateUser(UserTO userTO) {
-        return userServiceTX.updateUser(userTO);
+    public String updateUser(String id, UserTO userTO) {
+        return userServiceTX.updateUser(id, userTO);
     }
 
     public List<ScenarioTO> getUserScenario(String id) {

@@ -1,14 +1,17 @@
 package org.proygrad.turing.service.transactional;
 
 import org.proygrad.turing.api.user.UserPreferencesTO;
-import org.proygrad.turing.persistence.entities.UserPreferencesEntity;
+import org.proygrad.turing.persistence.entities.user.UserPreferencesEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class UserPreferencesMapper {
 
     public UserPreferencesEntity toEntity(UserPreferencesTO data){
         UserPreferencesEntity entity = new UserPreferencesEntity();
+        entity.setId(UUID.randomUUID().toString());
         entity.setLanguage(data.getLanguage());
         entity.setUnitSystem(data.getUnitSystem());
         entity.setFastScenario(data.getFastScenario());

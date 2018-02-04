@@ -15,7 +15,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public UserTO getUser(@RequestParam("id") String id) {
+    public UserTO getUser(@PathVariable("id") String id) {
         return userService.getUser(id);
     }
 
@@ -25,14 +25,14 @@ public class UserController {
         return userService.addUser(userTO);
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.PATCH)
-    public String updateUser(@RequestBody UserTO userTO) {
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.PATCH)
+    public String updateUser(@PathVariable("id") String id, @RequestBody UserTO userTO) {
 
-        return userService.updateUser(userTO);
+        return userService.updateUser(id, userTO);
     }
 
     @RequestMapping(value = "/user/{id}/scenario", method = RequestMethod.GET)
-    public List<ScenarioTO> getUserScenario(@RequestParam("id") String id) {
+    public List<ScenarioTO> getUserScenario(@PathVariable("id") String id) {
         return userService.getUserScenario(id);
     }
 }

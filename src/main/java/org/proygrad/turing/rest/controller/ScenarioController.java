@@ -12,18 +12,18 @@ public class ScenarioController {
     private ScenarioService scenarioService;
 
     @RequestMapping(value = "/scenario/{id}", method = RequestMethod.GET)
-    public ScenarioTO scenario(@RequestParam("id") String id) {
+    public ScenarioTO getScenario(@PathVariable("id") String id) {
         return scenarioService.getScenario(id);
     }
 
     @RequestMapping(value = "/scenario", method = RequestMethod.POST)
-    public String scenarioAdd(@RequestBody ScenarioTO scenarioTO) {
+    public String addScenario(@RequestBody ScenarioTO scenarioTO) {
 
         return scenarioService.addScenario(scenarioTO);
     }
 
     @RequestMapping(value = "/scenario/{id}", method = RequestMethod.PATCH)
-    public String scenarioUpd(@RequestParam("id") String id, @RequestBody ScenarioTO scenarioTO) {
+    public String updateScenario(@PathVariable("id") String id, @RequestBody ScenarioTO scenarioTO) {
 
         return scenarioService.updateScenario(id, scenarioTO);
     }

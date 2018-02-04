@@ -1,17 +1,18 @@
-package org.proygrad.turing.persistence.entities;
+package org.proygrad.turing.persistence.entities.user;
 
 
-import org.hibernate.annotations.GenericGenerator;
+import org.proygrad.turing.persistence.entities.AbstractHibernateEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-// @Entity
-// @Table(name = "USER_PREFERENCE")
-public class UserPreferencesEntity extends AbstractHibernateEntity<String>{
+@Entity
+@Table(name = "USER_PREFERENCE")
+public class UserPreferencesEntity extends AbstractHibernateEntity<String> {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "ID")
     private String id;
 
@@ -23,6 +24,16 @@ public class UserPreferencesEntity extends AbstractHibernateEntity<String>{
 
     @Column(name = "FAST_SCENARIO")
     private String fastScenario;
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUnitSystem() {
         return unitSystem;
@@ -48,13 +59,4 @@ public class UserPreferencesEntity extends AbstractHibernateEntity<String>{
         this.fastScenario = fastScenario;
     }
 
-    @Override
-    public String getId() {
-        return null;
-    }
-
-    @Override
-    public void setId(String s) {
-
-    }
 }

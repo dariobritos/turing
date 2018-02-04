@@ -1,22 +1,17 @@
 package org.proygrad.turing.api.scenario;
 
-import java.util.Map;
+
+import java.util.List;
 
 public class ScenarioTO {
 
     private String id;
-    private String name;
     private String type;
-
-    private Map<String, Double> input;
-    private Double seed=0d;
-
-    private String precision;
-
-    private String result;
-    private Map<String, Double> output;
-
-    private String unit;
+    private String unitSystem;
+    private List<ParameterTO> parameters;
+    private List<CommonItemTO> configuration;
+    private String comments;
+    private List<CommonItemTO> output;
 
     public String getId() {
         return id;
@@ -24,14 +19,6 @@ public class ScenarioTO {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getType() {
@@ -42,52 +29,44 @@ public class ScenarioTO {
         this.type = type;
     }
 
-    public Map<String, Double> getInput() {
-        return input;
+    public String getUnitSystem() {
+        return unitSystem;
     }
 
-    public void setInput(Map<String, Double> input) {
-        this.input = input;
+    public void setUnitSystem(String unitSystem) {
+        this.unitSystem = unitSystem;
     }
 
-    public double getSeed() {
-        return seed;
+    public List<ParameterTO> getParameters() {
+        return parameters;
     }
 
-    public void setSeed(Double seed) {
-        this.seed = seed;
+    public void setParameters(List<ParameterTO> parameters) {
+        this.parameters = parameters;
     }
 
-    public String getPrecision() {
-        return precision;
+    public List<CommonItemTO> getConfiguration() {
+        return configuration;
     }
 
-    public void setPrecision(String precision) {
-        this.precision = precision;
+    public void setConfiguration(List<CommonItemTO> configuration) {
+        this.configuration = configuration;
     }
 
-    public String getResult() {
-        return result;
+    public String getComments() {
+        return comments;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
-    public Map<String, Double> getOutput() {
+    public List<CommonItemTO> getOutput() {
         return output;
     }
 
-    public void setOutput(Map<String, Double> output) {
+    public void setOutput(List<CommonItemTO> output) {
         this.output = output;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
     }
 }
 

@@ -1,17 +1,15 @@
-package org.proygrad.turing.persistence.entities;
+package org.proygrad.turing.persistence.entities.user;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.proygrad.turing.persistence.entities.AbstractHibernateEntity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.UUID;
 
-// @Entity
-// @Table(name = "USER")
-public class UserEntity extends AbstractHibernateEntity<String>{
+@Entity
+@Table(name = "USER")
+public class UserEntity extends AbstractHibernateEntity<String> {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "ID")
     private String id;
 
@@ -24,11 +22,16 @@ public class UserEntity extends AbstractHibernateEntity<String>{
     @Column(name = "EMAIL")
     private String email;
 
-    @OneToOne(mappedBy = "USER_ID")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name ="USER_PREFERENCE_ID")
     private UserPreferencesEntity preferences;
 
-    @OneToMany(mappedBy = "SCENARIO_ID")
-    private List<ScenarioEntity> scenarios;
+    //@OneToMany(mappedBy = "SCENARIO_ID")
+    //private List<ScenarioEntity> scenarios;
+
+    public UserEntity(){
+        this.setId(UUID.randomUUID().toString());
+    }
 
     @Override
     public String getId() {
@@ -64,19 +67,18 @@ public class UserEntity extends AbstractHibernateEntity<String>{
         this.email = email;
     }
 
-    public UserPreferencesEntity getPreferences() {
+   public UserPreferencesEntity getPreferences() {
         return preferences;
     }
 
     public void setPreferences(UserPreferencesEntity preferences) {
         this.preferences = preferences;
-    }
-
+    }/*
     public List<ScenarioEntity> getScenarios() {
         return scenarios;
     }
 
     public void setScenarios(List<ScenarioEntity> scenarios) {
         this.scenarios = scenarios;
-    }
+    }*/
 }
