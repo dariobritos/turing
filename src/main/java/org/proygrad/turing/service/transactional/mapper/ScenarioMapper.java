@@ -36,8 +36,10 @@ public class ScenarioMapper {
 
         entity.setComments(data.getComments());
 
-        List<CommonItemEntity> outputs = data.getOutput().stream().map(this.commonItemMapper::toEntity).collect(Collectors.toList());
-        entity.setOutput(outputs);
+        if(data.getOutput() != null) {
+            List<CommonItemEntity> outputs = data.getOutput().stream().map(this.commonItemMapper::toEntity).collect(Collectors.toList());
+            entity.setOutput(outputs);
+        }
 
         return entity;
     }
