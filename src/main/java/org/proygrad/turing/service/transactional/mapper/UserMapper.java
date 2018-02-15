@@ -4,7 +4,6 @@ import org.proygrad.turing.api.user.UserPreferencesTO;
 import org.proygrad.turing.api.user.UserTO;
 import org.proygrad.turing.persistence.entities.user.UserEntity;
 import org.proygrad.turing.persistence.entities.user.UserPreferencesEntity;
-import org.proygrad.turing.service.transactional.UserPreferencesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

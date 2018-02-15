@@ -1,4 +1,4 @@
-package org.proygrad.turing.service.transactional;
+package org.proygrad.turing.service.transactional.mapper;
 
 import org.proygrad.turing.api.user.UserPreferencesTO;
 import org.proygrad.turing.persistence.entities.user.UserPreferencesEntity;
