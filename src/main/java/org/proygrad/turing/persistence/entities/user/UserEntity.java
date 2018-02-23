@@ -26,9 +26,6 @@ public class UserEntity extends AbstractHibernateEntity<String> {
     @JoinColumn(name ="USER_PREFERENCE_ID")
     private UserPreferencesEntity preferences;
 
-    //@OneToMany(mappedBy = "SCENARIO_ID")
-    //private List<ScenarioEntity> scenarios;
-
     public UserEntity(){
         this.setId(UUID.randomUUID().toString());
     }
@@ -73,12 +70,6 @@ public class UserEntity extends AbstractHibernateEntity<String> {
 
     public void setPreferences(UserPreferencesEntity preferences) {
         this.preferences = preferences;
-    }/*
-    public List<ScenarioEntity> getScenarios() {
-        return scenarios;
     }
 
-    public void setScenarios(List<ScenarioEntity> scenarios) {
-        this.scenarios = scenarios;
-    }*/
 }

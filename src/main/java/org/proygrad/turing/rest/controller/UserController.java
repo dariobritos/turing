@@ -1,12 +1,9 @@
 package org.proygrad.turing.rest.controller;
 
-import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.api.user.UserTO;
 import org.proygrad.turing.service.nontransactional.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class UserController {
@@ -31,8 +28,4 @@ public class UserController {
         return userService.updateUser(id, userTO);
     }
 
-    @RequestMapping(value = "/user/{id}/scenarios", method = RequestMethod.GET)
-    public List<ScenarioTO> getUserScenario(@PathVariable("id") String id) {
-        return userService.getUserScenario(id);
-    }
 }

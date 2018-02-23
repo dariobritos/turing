@@ -5,6 +5,8 @@ import org.proygrad.turing.service.nontransactional.ScenarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ScenarioController {
 
@@ -41,4 +43,8 @@ public class ScenarioController {
         return scenarioService.updateOutputScenario(id, scenarioTO);
     }
 
+    @RequestMapping(value = "/scenario", method = RequestMethod.GET)
+    public List<ScenarioTO> getUserScenario(@RequestParam(value = "user_id", required = false) String userId) {
+        return scenarioService.getUserScenario(userId);
+    }
 }

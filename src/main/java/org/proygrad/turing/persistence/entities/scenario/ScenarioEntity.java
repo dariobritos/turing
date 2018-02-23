@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.proygrad.turing.persistence.entities.AbstractHibernateEntity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -36,6 +37,12 @@ public class ScenarioEntity extends AbstractHibernateEntity<String> {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "SCENARIO_OUTPUT_ID")
     private List<CommonItemEntity> output;
+
+    @Column(name="USER_ID")
+    private String userId;
+
+    @Column(name = "CREATE_DATE")
+    private Date createDate;
 
     @Override
     public String getId() {
@@ -95,4 +102,19 @@ public class ScenarioEntity extends AbstractHibernateEntity<String> {
         this.output = output;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 }

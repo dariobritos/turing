@@ -99,4 +99,7 @@ public class ScenarioServiceTX {
         return null;
     }
 
+    public List<ScenarioTO> getUserScenario(String userId) {
+        return scenarioDAO.readByUserId(userId).stream().map(this.scenarioMapper::toTransferObject).collect(Collectors.toList());
+    }
 }

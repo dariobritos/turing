@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 public class RequestCalculationTX {
 
-    private static final String LIMIT = "limit.query.request.calculation";
+    private static final String LIMIT_CALCULATION = "limit.query.request.calculation";
 
     @Autowired
     private Environment env;
@@ -37,7 +37,7 @@ public class RequestCalculationTX {
     }
 
     public List<RequestCalculationEntity> getPendingRequest() {
-        List<RequestCalculationEntity> pendingRequest = requestCalculationDAO.getPendingRequest(Integer.parseInt(env.getRequiredProperty(LIMIT)));
+        List<RequestCalculationEntity> pendingRequest = requestCalculationDAO.getPendingRequest(Integer.parseInt(env.getRequiredProperty(LIMIT_CALCULATION)));
         pendingRequest.forEach(pr -> this.setCompleteTask(pr.getId(), true,false));
 
         return pendingRequest;

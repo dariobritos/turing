@@ -1,6 +1,5 @@
 package org.proygrad.turing.service.transactional;
 
-import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.api.user.UserTO;
 import org.proygrad.turing.persistence.dao.UserDAO;
 import org.proygrad.turing.persistence.entities.user.UserEntity;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -40,6 +38,8 @@ public class UserServiceTX {
 
         if(entity!=null){
             entity.setName(userTO.getName());
+            entity.setEmail(userTO.getEmail());
+            entity.setSurname(userTO.getSurname());
 
             return entity.getId();
         }
@@ -47,7 +47,4 @@ public class UserServiceTX {
         return null;
     }
 
-    public List<ScenarioTO> getUserScenario(String id) {
-        return userMapper.toTransferObject(userDAO.load(id)).getScenarios();
-    }
 }

@@ -25,10 +25,6 @@ public class UserMapper {
         UserPreferencesEntity preferences = userPreferencesMapper.toEntity(data.getPreferences());
         entity.setPreferences(preferences);
 
-       // List<ScenarioEntity> scenarios = data.getScenarios().stream().map(this.scenarioMapper::toEntity).collect(Collectors.toList());
-        //entity.setScenarios(scenarios);
-
-
         return entity;
     }
 

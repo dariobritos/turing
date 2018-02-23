@@ -10,6 +10,7 @@ import org.proygrad.turing.persistence.entities.scenario.ScenarioEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,7 @@ public class ScenarioMapper {
         entity.setType(data.getType());
         entity.setUnitSystem(data.getUnitSystem());
 
+
         List<ParameterEntity> parameters = data.getParameters().stream().map(this.parameterMapper::toEntity).collect(Collectors.toList());
         entity.setParameters(parameters);
 
@@ -40,6 +42,9 @@ public class ScenarioMapper {
             List<CommonItemEntity> outputs = data.getOutput().stream().map(this.commonItemMapper::toEntity).collect(Collectors.toList());
             entity.setOutput(outputs);
         }
+
+        entity.setUserId(data.getUserId());
+        entity.setCreateDate(new Date());
 
         return entity;
     }
@@ -62,6 +67,8 @@ public class ScenarioMapper {
 
         List<CommonItemTO> outputs = data.getOutput().stream().map(this.commonItemMapper::toTransferObject).collect(Collectors.toList());
         transferObject.setOutput(outputs);
+
+        transferObject.setUserId(data.getUserId());
 
         return transferObject;
     }

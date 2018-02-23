@@ -7,6 +7,8 @@ import org.proygrad.turing.service.transactional.ScenarioServiceTX;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ScenarioService {
 
@@ -46,4 +48,7 @@ public class ScenarioService {
         return scenarioId;
     }
 
+    public List<ScenarioTO> getUserScenario(String userId) {
+        return scenarioServiceTX.getUserScenario(userId);
+    }
 }

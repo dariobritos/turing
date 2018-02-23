@@ -1,9 +1,5 @@
 package org.proygrad.turing.api.user;
 
-import org.proygrad.turing.api.scenario.ScenarioTO;
-
-import java.util.List;
-
 public class UserTO {
 
     private String id;
@@ -11,7 +7,6 @@ public class UserTO {
     private String surname;
     private String email;
     private UserPreferencesTO preferences;
-    private List<ScenarioTO> scenarios;
 
     public String getId() {
         return id;
@@ -53,11 +48,4 @@ public class UserTO {
         this.preferences = preferences;
     }
 
-    public List<ScenarioTO> getScenarios() {
-        return scenarios;
-    }
-
-    public void setScenarios(List<ScenarioTO> scenarios) {
-        this.scenarios = scenarios;
-    }
 }

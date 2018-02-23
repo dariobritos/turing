@@ -12,6 +12,7 @@ public class ScenarioTO {
     private List<CommonItemTO> configuration;
     private String comments;
     private List<CommonItemTO> output;
+    private String userId;
 
     public String getId() {
         return id;
@@ -67,6 +68,14 @@ public class ScenarioTO {
 
     public void setOutput(List<CommonItemTO> output) {
         this.output = output;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
 
