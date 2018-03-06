@@ -5,6 +5,8 @@ import org.proygrad.turing.service.transactional.UserServiceTX;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -23,4 +25,7 @@ public class UserService {
         return userServiceTX.updateUser(id, userTO);
     }
 
+    public UserTO getUserByEmail(String email){
+        return userServiceTX.getUserByEmail(email);
+    }
 }
