@@ -21,6 +21,8 @@ public class UserMapper {
         entity.setName(data.getName());
         entity.setSurname(data.getSurname());
         entity.setEmail(data.getEmail());
+        entity.setPassword(data.getPassword());
+        entity.setOrganization(data.getOrganization());
 
         UserPreferencesEntity preferences = userPreferencesMapper.toEntity(data.getPreferences());
         entity.setPreferences(preferences);
@@ -35,12 +37,11 @@ public class UserMapper {
         transferObject.setName(data.getName());
         transferObject.setSurname(data.getSurname());
         transferObject.setEmail(data.getEmail());
+        transferObject.setPassword(data.getPassword());
+        transferObject.setOrganization(data.getOrganization());
 
         UserPreferencesTO preferences = userPreferencesMapper.toTransferObject(data.getPreferences());
         transferObject.setPreferences(preferences);
-
-       // List<ScenarioTO> scenarios = data.getScenarios().stream().map(this.scenarioMapper::toTransferObject).collect(Collectors.toList());
-       // transferObject.setScenarios(scenarios);
 
         return transferObject;
     }

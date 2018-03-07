@@ -22,6 +22,12 @@ public class UserEntity extends AbstractHibernateEntity<String> {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "ORGANIZATION")
+    private String organization;
+
+    @Column(name = "PASSWORD")
+    private String password;
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name ="USER_PREFERENCE_ID")
     private UserPreferencesEntity preferences;
@@ -64,7 +70,7 @@ public class UserEntity extends AbstractHibernateEntity<String> {
         this.email = email;
     }
 
-   public UserPreferencesEntity getPreferences() {
+    public UserPreferencesEntity getPreferences() {
         return preferences;
     }
 
@@ -72,4 +78,19 @@ public class UserEntity extends AbstractHibernateEntity<String> {
         this.preferences = preferences;
     }
 
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

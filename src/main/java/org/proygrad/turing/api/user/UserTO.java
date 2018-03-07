@@ -6,6 +6,8 @@ public class UserTO {
     private String name;
     private String surname;
     private String email;
+    private String organization;
+    private String password;
     private UserPreferencesTO preferences;
 
     public String getId() {
@@ -48,4 +50,19 @@ public class UserTO {
         this.preferences = preferences;
     }
 
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
