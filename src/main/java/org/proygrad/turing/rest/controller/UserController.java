@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public UserTO updateUser(@RequestParam(value = "email", required = false) String email) {
+    public UserTO getUserByEmail(@RequestParam(value = "email", required = true) String email) {
         return userService.getUserByEmail(email);
     }
 

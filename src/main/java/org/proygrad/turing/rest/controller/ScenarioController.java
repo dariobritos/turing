@@ -44,7 +44,7 @@ public class ScenarioController {
     }
 
     @RequestMapping(value = "/scenario", method = RequestMethod.GET)
-    public List<ScenarioTO> getUserScenario(@RequestParam(value = "user_id", required = false) String userId) {
+    public List<ScenarioTO> getUserScenario(@RequestParam(value = "user_id", required = true) String userId) {
         return scenarioService.getUserScenario(userId);
     }
 }
