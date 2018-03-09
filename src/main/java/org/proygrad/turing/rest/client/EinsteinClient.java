@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class EinsteinClient {
 
-    private static String DIR_EINSTEIN = "http://einstein";
+    private static String DIR_EINSTEIN = "http://localhost:9041";
 
     private static String POST_CALCULATION = DIR_EINSTEIN + "/calculation";
 
