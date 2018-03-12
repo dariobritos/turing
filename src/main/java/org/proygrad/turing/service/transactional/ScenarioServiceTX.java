@@ -1,6 +1,7 @@
 package org.proygrad.turing.service.transactional;
 
 
+import org.apache.log4j.Logger;
 import org.proygrad.turing.api.scenario.ScenarioTO;
 import org.proygrad.turing.persistence.dao.scenario.CommonItemDAO;
 import org.proygrad.turing.persistence.dao.scenario.ParameterDAO;
@@ -22,6 +23,9 @@ import java.util.stream.Collectors;
 @Transactional
 public class ScenarioServiceTX {
 
+    private static final Logger LOGGER = Logger.getLogger(ScenarioServiceTX.class);
+
+
     @Autowired
     private ScenarioDAO scenarioDAO;
 
@@ -41,21 +45,23 @@ public class ScenarioServiceTX {
     private CommonItemDAO commonItemDAO;
 
     public ScenarioTO getScenario(String id) {
+        LOGGER.info("Reading scenario: " + id);
         return scenarioMapper.toTransferObject(scenarioDAO.load(id));
     }
 
     public String addScenario(ScenarioTO scenarioTO) {
+        LOGGER.info("Saving scenario..");
         ScenarioEntity entity = scenarioMapper.toEntity(scenarioTO);
         scenarioDAO.save(entity);
-
+        LOGGER.info("Scenario saved: "+ entity.getId());
         return entity.getId();
     }
 
     public String updateScenario(String id, ScenarioTO scenarioTO) {
+        LOGGER.info("Updating scenario...");
         ScenarioEntity entity = scenarioDAO.load(id);
-
+        LOGGER.info("Updating scenario not implemented...");
         if(entity!=null){
-
             return entity.getId();
         }
         return null;
@@ -100,6 +106,7 @@ public class ScenarioServiceTX {
     }
 
     public List<ScenarioTO> getUserScenario(String userId) {
+        LOGGER.info("Reading scenarios for user: " + userId);
         return scenarioDAO.readByUserId(userId).stream().map(this.scenarioMapper::toTransferObject).collect(Collectors.toList());
     }
 }

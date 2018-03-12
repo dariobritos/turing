@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ParameterMapper {
 
-    private static final String  STATIC = "STATIC";
+    private static final String DETERMINISTIC = "DETERMINISTIC";
 
     @Autowired
     private DistributionMapper distributionMapper;
@@ -23,7 +23,7 @@ public class ParameterMapper {
         entity.setUnit(data.getUnit());
         entity.setValue(data.getValue());
 
-        if(!STATIC.equals(data.getType())) {
+        if(!DETERMINISTIC.equals(data.getType())) {
             DistributionEntity distribution = distributionMapper.toEntity(data.getDistribution());
             entity.setDistribution(distribution);
         }
@@ -40,7 +40,7 @@ public class ParameterMapper {
         transferObject.setUnit(data.getUnit());
         transferObject.setValue(data.getValue());
 
-        if(!STATIC.equals(data.getType())) {
+        if(!DETERMINISTIC.equals(data.getType())) {
             DistributionTO distribution = distributionMapper.toTransferObject(data.getDistribution());
             transferObject.setDistribution(distribution);
         }

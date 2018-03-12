@@ -1,5 +1,6 @@
 package org.proygrad.turing.service.transactional;
 
+import org.apache.log4j.Logger;
 import org.proygrad.turing.persistence.dao.scenario.RequestCalculationDAO;
 import org.proygrad.turing.persistence.entities.request.RequestCalculationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import java.util.List;
 @Transactional
 public class RequestCalculationTX {
 
+    private static final Logger LOGGER = Logger.getLogger(RequestCalculationTX.class);
+
     private static final String LIMIT_CALCULATION = "limit.query.request.calculation";
 
     @Autowired
@@ -24,6 +27,7 @@ public class RequestCalculationTX {
 
     public String addRequestCalculation(String scenarioId) {
 
+        LOGGER.info("Saving request calculation...");
         RequestCalculationEntity newRequest = new RequestCalculationEntity();
         newRequest.setId(scenarioId);
         newRequest.setRequestId(null);
@@ -32,7 +36,7 @@ public class RequestCalculationTX {
         newRequest.setComplete(false);
 
         requestCalculationDAO.save(newRequest);
-
+        LOGGER.info("Request calculation saved: " + newRequest.getId());
         return newRequest.getId();
     }
 
