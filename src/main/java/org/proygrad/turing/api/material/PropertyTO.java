@@ -1,12 +1,12 @@
-package org.proygrad.turing.api.scenario;
+package org.proygrad.turing.api.material;
 
-public class ParameterTO {
+public class PropertyTO {
 
     private String code;
     private Double value;
     private String unit;
     private String type;
-    private DistributionTO distribution;
+    private PropertyDistributionTO distribution;
     private String magnitude;
 
     public String getCode() {
@@ -33,11 +33,11 @@ public class ParameterTO {
         this.type = type;
     }
 
-    public DistributionTO getDistribution() {
+    public PropertyDistributionTO getDistribution() {
         return distribution;
     }
 
-    public void setDistribution(DistributionTO distribution) {
+    public void setDistribution(PropertyDistributionTO distribution) {
         this.distribution = distribution;
     }
 

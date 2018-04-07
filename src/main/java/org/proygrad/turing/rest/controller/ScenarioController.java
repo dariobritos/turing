@@ -13,7 +13,6 @@ public class ScenarioController {
 
     private static final Logger LOGGER = Logger.getLogger(ScenarioController.class);
 
-
     @Autowired
     private ScenarioService scenarioService;
 

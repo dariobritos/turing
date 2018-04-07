@@ -1,12 +1,37 @@
-package org.proygrad.turing.api.scenario;
+package org.proygrad.turing.persistence.entities.material;
 
-public class ParameterTO {
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+//@Entity
+//@Table(name = "PROPERTY")
+public class PropertyEntity {
+
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "ID")
+    private String id;
+
+    @Column(name = "CODE")
     private String code;
+
+    @Column(name = "VALUE")
     private Double value;
+
+    @Column(name = "UNIT")
     private String unit;
+
+    @Column(name = "TYPE")
     private String type;
-    private DistributionTO distribution;
+
+    @Column(name = "DISTRIBUTION")
+    private PropertyDistributionEntity distribution;
+
+    @Column(name = "MAGNITUDE")
     private String magnitude;
 
     public String getCode() {
@@ -33,11 +58,11 @@ public class ParameterTO {
         this.type = type;
     }
 
-    public DistributionTO getDistribution() {
+    public PropertyDistributionEntity getDistribution() {
         return distribution;
     }
 
-    public void setDistribution(DistributionTO distribution) {
+    public void setDistribution(PropertyDistributionEntity distribution) {
         this.distribution = distribution;
     }
 
@@ -56,8 +81,6 @@ public class ParameterTO {
     public void setUnit(String unit) {
         this.unit = unit;
     }
-
-    private String id;
 
     public String getId() {
         return id;

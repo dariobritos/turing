@@ -27,7 +27,7 @@ public class UserController {
         return userService.addUser(userTO);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
     public String updateUser(@PathVariable("id") String id, @RequestBody UserTO userTO) {
         LOGGER.info("PATCH User request received: " + id);
         return userService.updateUser(id, userTO);
