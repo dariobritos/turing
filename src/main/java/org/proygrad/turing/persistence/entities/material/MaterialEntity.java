@@ -1,14 +1,15 @@
 package org.proygrad.turing.persistence.entities.material;
 
-import jdk.nashorn.internal.runtime.Property;
 import org.hibernate.annotations.GenericGenerator;
 import org.proygrad.turing.persistence.entities.AbstractHibernateEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.List;
 
-@Entity
-@Table(name = "MATERIAL")
+//@Entity
+//@Table(name = "MATERIAL")
 public class MaterialEntity extends AbstractHibernateEntity<String> {
 
     @Id

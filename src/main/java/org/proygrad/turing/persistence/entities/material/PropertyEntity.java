@@ -2,10 +2,12 @@ package org.proygrad.turing.persistence.entities.material;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Entity
-@Table(name = "PROPERTY")
+//@Entity
+//@Table(name = "PROPERTY")
 public class PropertyEntity {
 
     @Id
