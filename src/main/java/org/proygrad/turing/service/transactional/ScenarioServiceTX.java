@@ -25,7 +25,6 @@ public class ScenarioServiceTX {
 
     private static final Logger LOGGER = Logger.getLogger(ScenarioServiceTX.class);
 
-
     @Autowired
     private ScenarioDAO scenarioDAO;
 
