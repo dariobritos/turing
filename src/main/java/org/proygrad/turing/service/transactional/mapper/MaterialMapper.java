@@ -18,7 +18,7 @@ public class MaterialMapper {
 
     public MaterialEntity toEntity(MaterialTO data){
         MaterialEntity entity = new MaterialEntity();
-        entity.setDescription(data.getDescription());
+        entity.setName(data.getName());
 
         List<PropertyEntity> properties = data.getProperties().stream().map(this.propertiesMapper::toEntity).collect(Collectors.toList());
         entity.setProperties(properties);
@@ -32,7 +32,7 @@ public class MaterialMapper {
         MaterialTO transferObject = new MaterialTO();
 
         transferObject.setId(data.getId());
-        transferObject.setDescription(data.getDescription());
+        transferObject.setName(data.getName());
 
         List<PropertyTO> properties = data.getProperties().stream().map(this.propertiesMapper::toTransferObject).collect(Collectors.toList());
         transferObject.setProperties(properties);

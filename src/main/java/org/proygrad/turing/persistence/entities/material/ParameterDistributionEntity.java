@@ -3,10 +3,10 @@ package org.proygrad.turing.persistence.entities.material;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "PARAMETER_DISTRIBUTION")
 public class ParameterDistributionEntity {
 
 

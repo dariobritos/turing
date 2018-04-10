@@ -6,7 +6,7 @@ public class MaterialTO {
 
     private String id;
     private String userId;
-    private String description;
+    private String name;
     private List<PropertyTO> properties;
 
     public String getId() {
@@ -25,12 +25,12 @@ public class MaterialTO {
         this.userId = userId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<PropertyTO> getProperties() {

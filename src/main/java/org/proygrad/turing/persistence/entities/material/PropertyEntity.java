@@ -26,7 +26,8 @@ public class PropertyEntity {
     @Column(name = "TYPE")
     private String type;
 
-    @Column(name = "DISTRIBUTION")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "DISTRIBUTION_ID")
     private PropertyDistributionEntity distribution;
 
     @Column(name = "MAGNITUDE")
