@@ -14,7 +14,6 @@ public class MaterialService {
     private MaterialServiceTX materialServiceTX;
 
     public List<MaterialTO> getMaterials(String userId, List<String> properties) {
-
         return materialServiceTX.getMaterials(userId, properties);
     }
 }

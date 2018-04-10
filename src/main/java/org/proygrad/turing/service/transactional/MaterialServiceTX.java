@@ -24,7 +24,7 @@ public class MaterialServiceTX {
     private MaterialMapper materialMapper;
 
     public List<MaterialTO> getMaterials(String userId, List<String> properties) {
-        LOGGER.info("Reading scenarios for user: " + userId);
+        LOGGER.info("Reading materials for user: " + userId);
         return materialDAO.readByUserIdAndProperties(userId, properties).stream().map(this.materialMapper::toTransferObject).collect(Collectors.toList());
     }
 }

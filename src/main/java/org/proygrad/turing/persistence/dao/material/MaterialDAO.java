@@ -28,11 +28,21 @@ public class MaterialDAO extends AbstractHibernateEntityDAO<MaterialEntity,Strin
         cq.select(from);
 
         //TODO: ajustar predicados en base a existencia de parametros
-        Predicate c1 = cb.equal(from.get("userId"), userId);
 
-        Predicate condition = cb.and(c1);
+        Predicate condition = null;
 
-        cq.where(condition);
+        if (userId != null){
+            Predicate c1 = cb.equal(from.get("userId"), userId);
+            condition = cb.and(c1);
+        }
+
+        if (properties != null && !properties.isEmpty()){
+            // ver como...
+        }
+
+        if(condition!=null) {
+            cq.where(condition);
+        }
 
         cq.orderBy(cb.desc(from.get("createDate")));
         List<MaterialEntity> resultList = em.createQuery(cq).setMaxResults(maxResults).getResultList();
