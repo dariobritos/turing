@@ -38,5 +38,9 @@ public class MaterialServiceTX {
     }
 
 
-
+    public void deleteMaterial(String id) {
+        LOGGER.info("Deleting material..");
+        materialDAO.delete(id);
+        LOGGER.info("Material deleted: "+ id);
+    }
 }

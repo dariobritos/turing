@@ -25,7 +25,7 @@ public class MaterialService {
     }
 
     public void deleteMaterial(String id) {
-
+        materialServiceTX.deleteMaterial(id);
     }
 
 }
