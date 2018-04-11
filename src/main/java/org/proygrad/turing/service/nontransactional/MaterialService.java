@@ -28,4 +28,12 @@ public class MaterialService {
         materialServiceTX.deleteMaterial(id);
     }
 
+    public MaterialTO getMaterial(String id) {
+        return materialServiceTX.getMaterial(id);
+    }
+
+    public String updateMaterial(String id, MaterialTO materialTO) {
+        return materialServiceTX.updateMaterial(id, materialTO);
+    }
+
 }

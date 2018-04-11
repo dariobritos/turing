@@ -48,4 +48,5 @@ public class MaterialDAO extends AbstractHibernateEntityDAO<MaterialEntity,Strin
 
         return resultList;
     }
+
 }

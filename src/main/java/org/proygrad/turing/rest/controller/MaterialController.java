@@ -16,6 +16,12 @@ public class MaterialController {
     @Autowired
     private MaterialService materialService; // el service q me resuelva
 
+    @RequestMapping(value = "/material/{id}", method = RequestMethod.GET)
+    public MaterialTO getMaterial(@PathVariable("id") String id) {
+        LOGGER.info("GET Material request received: " + id);
+        return materialService.getMaterial(id);
+    }
+
     @RequestMapping(value = "/material", method = RequestMethod.GET)
     public List<MaterialTO> getMaterials(@RequestParam(value = "user_id", required = false) String userId,
                                          @RequestParam(value = "properties", required = false) List<String> properties) {
@@ -24,7 +30,7 @@ public class MaterialController {
     }
 
     @RequestMapping(value = "/material", method = RequestMethod.POST)
-    public String addScenario(@RequestBody MaterialTO materialTO) {
+    public String addMaterial(@RequestBody MaterialTO materialTO) {
         LOGGER.info("POST Material request received...");
         return materialService.addMaterial(materialTO);
     }
@@ -33,6 +39,13 @@ public class MaterialController {
     public void deleteMaterial(@PathVariable("id") String id) {
         LOGGER.info("DELETE Material request received: " + id);
         materialService.deleteMaterial(id);
+    }
+
+
+    @RequestMapping(value = "/material/{id}", method = RequestMethod.PATCH)
+    public String updateMaterial(@PathVariable("id") String id, @RequestBody MaterialTO materialTO) {
+        LOGGER.info("PATCH Material request received: " + id);
+        return materialService.updateMaterial(id, materialTO);
     }
 }
 

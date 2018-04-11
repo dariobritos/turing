@@ -22,7 +22,7 @@ public class MaterialEntity extends AbstractHibernateEntity<String> {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "MATERIAL_ID")
     private List<PropertyEntity> properties;
 
