@@ -44,7 +44,6 @@ public class MaterialDAO extends AbstractHibernateEntityDAO<MaterialEntity,Strin
             cq.where(condition);
         }
 
-        cq.orderBy(cb.desc(from.get("createDate")));
         List<MaterialEntity> resultList = em.createQuery(cq).setMaxResults(maxResults).getResultList();
 
         return resultList;

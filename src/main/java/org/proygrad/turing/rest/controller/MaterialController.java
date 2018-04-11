@@ -4,10 +4,7 @@ import org.apache.log4j.Logger;
 import org.proygrad.turing.api.material.MaterialTO;
 import org.proygrad.turing.service.nontransactional.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,16 @@ public class MaterialController {
         return materialService.getMaterials(userId, properties);
     }
 
- 
+    @RequestMapping(value = "/material", method = RequestMethod.POST)
+    public String addScenario(@RequestBody MaterialTO materialTO) {
+        LOGGER.info("POST Material request received...");
+        return materialService.addMaterial(materialTO);
+    }
 
+    @RequestMapping(value = "/material/{id}", method = RequestMethod.DELETE)
+    public void deleteMaterial(@PathVariable("id") String id) {
+        LOGGER.info("DELETE Material request received: " + id);
+        materialService.deleteMaterial(id);
+    }
 }
 

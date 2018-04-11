@@ -3,6 +3,7 @@ package org.proygrad.turing.service.transactional;
 import org.apache.log4j.Logger;
 import org.proygrad.turing.api.material.MaterialTO;
 import org.proygrad.turing.persistence.dao.material.MaterialDAO;
+import org.proygrad.turing.persistence.entities.material.MaterialEntity;
 import org.proygrad.turing.service.transactional.mapper.MaterialMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,4 +28,15 @@ public class MaterialServiceTX {
         LOGGER.info("Reading materials for user: " + userId);
         return materialDAO.readByUserIdAndProperties(userId, properties).stream().map(this.materialMapper::toTransferObject).collect(Collectors.toList());
     }
+
+    public String addMaterial(MaterialTO materialTO) {
+        LOGGER.info("Saving material..");
+        MaterialEntity entity = materialMapper.toEntity(materialTO);
+        materialDAO.save(entity);
+        LOGGER.info("Material saved: "+ entity.getId());
+        return entity.getId();
+    }
+
+
+
 }
