@@ -41,7 +41,6 @@ public class MaterialController {
         materialService.deleteMaterial(id);
     }
 
-
     @RequestMapping(value = "/material/{id}", method = RequestMethod.PATCH)
     public String updateMaterial(@PathVariable("id") String id, @RequestBody MaterialTO materialTO) {
         LOGGER.info("PATCH Material request received: " + id);

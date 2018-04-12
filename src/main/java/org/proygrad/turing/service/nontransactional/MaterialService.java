@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MaterialService {
@@ -15,7 +16,15 @@ public class MaterialService {
     private MaterialServiceTX materialServiceTX;
 
     public List<MaterialTO> getMaterials(String userId, List<String> properties) {
-        return materialServiceTX.getMaterials(userId, properties);
+        List<MaterialTO> materials = materialServiceTX.getMaterials(userId);
+
+        if(properties!= null && !properties.isEmpty()){
+            materials = materials.stream().filter(m ->
+                    (m.getProperties() != null  &&
+                            m.getProperties().stream().anyMatch(p -> properties.contains(p.getCode()))
+            )).collect(Collectors.toList());
+        }
+        return materials;
     }
 
     public String addMaterial(MaterialTO materialTO) {

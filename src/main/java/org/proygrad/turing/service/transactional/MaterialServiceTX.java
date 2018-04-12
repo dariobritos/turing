@@ -30,9 +30,9 @@ public class MaterialServiceTX {
     @Autowired
     private PropertiesMapper propertiesMapper;
 
-    public List<MaterialTO> getMaterials(String userId, List<String> properties) {
+    public List<MaterialTO> getMaterials(String userId) {
         LOGGER.info("Reading materials for user: " + userId);
-        return materialDAO.readByUserIdAndProperties(userId, properties).stream().map(this.materialMapper::toTransferObject).collect(Collectors.toList());
+        return materialDAO.readByUserId(userId).stream().map(this.materialMapper::toTransferObject).collect(Collectors.toList());
     }
 
     public String addMaterial(MaterialTO materialTO) {
@@ -52,8 +52,9 @@ public class MaterialServiceTX {
 
     public MaterialTO getMaterial(String id) {
         LOGGER.info("Reading material for id: " + id);
-        return materialMapper.toTransferObject(materialDAO.load(id));
+        MaterialEntity materialEntity = materialDAO.read(id);
 
+        return materialEntity!=null ? materialMapper.toTransferObject(materialEntity) : null;
     }
 
     public String updateMaterial(String id, MaterialTO materialTO) {
