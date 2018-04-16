@@ -2,10 +2,8 @@ package org.proygrad.turing.service.transactional.mapper;
 
 import org.proygrad.turing.api.material.ParameterDistributionTO;
 import org.proygrad.turing.api.material.PropertyDistributionTO;
-import org.proygrad.turing.api.material.PropertyTO;
 import org.proygrad.turing.persistence.entities.material.ParameterDistributionEntity;
 import org.proygrad.turing.persistence.entities.material.PropertyDistributionEntity;
-import org.proygrad.turing.persistence.entities.material.PropertyEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,9 @@ public class PropertyDistributionMapper {
     @Autowired
     private ParameterDistributionMapper parameterDistributionMapper;
 
-    public PropertyDistributionEntity toEntity(PropertyDistributionTO data){
+    public PropertyDistributionEntity toEntity(PropertyDistributionTO data) {
+        if (data == null)
+            return null;
         PropertyDistributionEntity entity = new PropertyDistributionEntity();
         entity.setType(data.getType());
 
@@ -28,7 +28,9 @@ public class PropertyDistributionMapper {
         return entity;
     }
 
-    public PropertyDistributionTO toTransferObject(PropertyDistributionEntity data){
+    public PropertyDistributionTO toTransferObject(PropertyDistributionEntity data) {
+        if (data == null)
+            return null;
         PropertyDistributionTO transferObject = new PropertyDistributionTO();
 
         transferObject.setId(data.getId());
