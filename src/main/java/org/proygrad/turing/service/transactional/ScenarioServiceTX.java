@@ -93,10 +93,10 @@ public class ScenarioServiceTX {
         ScenarioEntity entity = scenarioDAO.load(id);
 
         if(entity != null){
-            entity.getOutput().forEach(o -> this.commonItemDAO.delete(o.getId()));
 
-            List<CommonItemEntity> outputs = scenarioTO.getOutput().stream().map(this.commonItemMapper::toEntity).collect(Collectors.toList());
-            entity.setOutput(outputs);
+
+            entity.getOutput().clear();
+            entity.getOutput().addAll(scenarioTO.getOutput().stream().map(this.commonItemMapper::toEntity).collect(Collectors.toList()));
 
             return entity.getId();
         }

@@ -2,12 +2,10 @@ package org.proygrad.turing.persistence.entities.material;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-//@Entity
-//@Table(name = "PROPERTY")
+@Entity
+@Table(name = "PROPERTY")
 public class PropertyEntity {
 
     @Id
@@ -28,7 +26,8 @@ public class PropertyEntity {
     @Column(name = "TYPE")
     private String type;
 
-    @Column(name = "DISTRIBUTION")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "DISTRIBUTION_ID")
     private PropertyDistributionEntity distribution;
 
     @Column(name = "MAGNITUDE")

@@ -17,7 +17,7 @@ public class MaterialDAO extends AbstractHibernateEntityDAO<MaterialEntity,Strin
 
     public static final int maxResults = 10;
 
-    public List<MaterialEntity> readByUserIdAndProperties(String userId, List<String> properties){
+    public List<MaterialEntity> readByUserId(String userId){
 
         EntityManager em = getCurrentSession();
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -27,16 +27,19 @@ public class MaterialDAO extends AbstractHibernateEntityDAO<MaterialEntity,Strin
         Root<MaterialEntity> from = cq.from(MaterialEntity.class);
         cq.select(from);
 
-        //TODO: ajustar predicados en base a existencia de parametros
-        Predicate c1 = cb.equal(from.get("userId"), userId);
 
-        Predicate condition = cb.and(c1);
+        if (userId != null){
+            Predicate condition = null;
 
-        cq.where(condition);
+            Predicate c1 = cb.equal(from.get("userId"), userId);
+            condition = cb.and(c1);
 
-        cq.orderBy(cb.desc(from.get("createDate")));
+            cq.where(condition);
+        }
+
         List<MaterialEntity> resultList = em.createQuery(cq).setMaxResults(maxResults).getResultList();
 
         return resultList;
     }
+
 }

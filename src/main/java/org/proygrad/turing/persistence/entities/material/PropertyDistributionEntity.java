@@ -2,11 +2,11 @@ package org.proygrad.turing.persistence.entities.material;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "PROPERTY_DISTRIBUTION")
 public class PropertyDistributionEntity {
 
     @Id
@@ -18,7 +18,8 @@ public class PropertyDistributionEntity {
     @Column(name = "TYPE")
     private String type;
 
-    @Column(name = "PARAMETERS")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PROPERTY_DISTRIBUTION_ID")
     private List<ParameterDistributionEntity> parameters;
 
     public String getType() {

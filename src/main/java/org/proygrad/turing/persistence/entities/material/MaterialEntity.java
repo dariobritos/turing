@@ -3,13 +3,11 @@ package org.proygrad.turing.persistence.entities.material;
 import org.hibernate.annotations.GenericGenerator;
 import org.proygrad.turing.persistence.entities.AbstractHibernateEntity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
-//@Entity
-//@Table(name = "MATERIAL")
+@Entity
+@Table(name = "MATERIAL")
 public class MaterialEntity extends AbstractHibernateEntity<String> {
 
     @Id
@@ -21,10 +19,11 @@ public class MaterialEntity extends AbstractHibernateEntity<String> {
     @Column(name = "USER_ID")
     private String userId;
 
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @Column(name = "NAME")
+    private String name;
 
-    @Column(name = "PROPERTIES")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "MATERIAL_ID")
     private List<PropertyEntity> properties;
 
     public String getId() {
@@ -43,12 +42,12 @@ public class MaterialEntity extends AbstractHibernateEntity<String> {
         this.userId = userId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<PropertyEntity> getProperties() {

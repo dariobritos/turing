@@ -51,4 +51,5 @@ public class ScenarioController {
         LOGGER.info("GET Scenarios request received...");
         return scenarioService.getUserScenario(userId);
     }
+
 }
