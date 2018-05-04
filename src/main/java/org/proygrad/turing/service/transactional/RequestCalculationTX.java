@@ -42,9 +42,12 @@ public class RequestCalculationTX {
 
     public List<RequestCalculationEntity> getPendingRequest() {
         List<RequestCalculationEntity> pendingRequest = requestCalculationDAO.getPendingRequest(Integer.parseInt(env.getRequiredProperty(LIMIT_CALCULATION)));
-        pendingRequest.forEach(pr -> this.setCompleteTask(pr.getId(), true,false));
 
         return pendingRequest;
+    }
+
+    public void markRequested(RequestCalculationEntity pendingRequest) {
+        this.setCompleteTask(pendingRequest.getId(), true,false);
     }
 
     public void setRequestId(String entityId, String requestId) {
