@@ -38,6 +38,7 @@ public class RequestCalculationJob {
             String requestCalculationId = einsteinClient.postCalculation(scenarioTO);
             LOGGER.info("Calculation id obtained: " + requestCalculationId);
             requestCalculationTX.setRequestId(pendingRequest.getId(), requestCalculationId);
+            requestCalculationTX.markRequested(pendingRequest);
 
         }
     }
